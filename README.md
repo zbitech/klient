@@ -7,6 +7,10 @@ used to manage their creation, update, retrieval, and update through the API ser
 Afterward, a listener is registered with the API server to monitor the success or failure 
 of the resources.
 
+### References
+- https://medium.com/@alphegasolutions/introducing-zbi-e9b2eb346a74
+- https://medium.com/@alphegasolutions/zbi-architecture-a8dc4aaf4357
+
 ## K8s Client
 
 ## K8s Informer
