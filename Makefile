@@ -1,0 +1,6 @@
+compile:
+	go build -v ./...
+
+unit_tests:
+	go clean -testcache
+	export ASSET_PATH_DIRECTORY=${PWD}/cfg && export KUBE_CONFIG=${PWD}/cfg/kubeconfig && go test -v ./...
