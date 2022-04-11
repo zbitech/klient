@@ -1,0 +1,6 @@
+kubernetes:
+  inCluster: false
+  kubeConfig: ./cfg/kubeconfig
+  informer:
+    requeueLimit: 10
+    requeueDelay: 10

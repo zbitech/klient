@@ -1,0 +1,79 @@
+{{define "DEPLOYMENT"}}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-app
+  namespace: default
+  labels:
+    app: nginx
+spec:
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: webserver
+        image: nginx
+        imagePullPolicy: Always
+{{end}}
+
+{{define "SERVICE"}}
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-svc
+  namespace: default
+  labels:
+    app: nginx
+spec:
+  selector:
+    app: nginx
+  ports:
+    - name: http
+      port: 80
+      targetPort: 80
+{{end}}
+
+{{define "CONFIGMAP"}}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-cm
+  namespace: default
+  labels:
+    app: nginx
+data:
+  content: abc
+{{end}}
+
+{{define "SECRET"}}
+apiVersion: v1
+kind: Secret
+metadata:
+  name: nginx-secret
+  namespace: default
+  labels:
+    app: nginx
+data:
+  password: {{.Password}}
+{{end}}
+
+{{define "PVC"}}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: nginx-pvc
+  namespace: default
+  labels:
+    app: nginx
+spec:
+  accessModes:
+    - ReadWriteOnce
+{{end}}
+
+{{define "SNAPSHOT_SCHEDULE"}}
+{{end}}
